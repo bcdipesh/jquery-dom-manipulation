@@ -3,7 +3,9 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>jQuery DOM Practice</title>
+  <meta name="description" content="DOM manipulation with jQuery">
+  <meta name="author" content="Dipesh B C">
   <link rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.css">
   <style>
     img {
@@ -72,7 +74,31 @@
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script>
-  // Add your code here!
+    // 1. When the DOM is ready, console.log the message “Let’s get ready to party with jQuery!”
+    $(window).on('load', () => console.log("Let's get ready to party with jQuery!"))
+
+    // 2. Give all images inside of an article tag the class of image-center.
+    $('article img').addClass('image-center');
+
+    // 3. Remove the last paragraph in the article.
+    $('article p').last().remove();
+
+    // 4. Set the font size of the title to be a random pixel size from 0 to 100.
+    $('#title').css("font-size", () => Math.floor(Math.random() * 100) + 1)
+
+    // 5. Add an item to the list; it can say whatever you want.
+    $('<li>New li from jQuery</li>').appendTo('ol')
+
+    // 6. Scratch that; the list is silly. Empty the aside and put a paragraph in it apologizing for the list’s existence.
+    $('aside').empty().append('<p>jQuery apologizes and removed the existence of the list.</p>')
+
+    // 7. When you change the numbers in the three inputs on the bottom, the background color of the body should change to match whatever the three values in the inputs are.
+    $('.form-control').on('input', () => {
+      const [red, blue, green] = $('.form-control');
+
+      $('body').css('background-color', `rgb(${red.value}, ${blue.value}, ${green.value})`)
+    })
+
   </script>
 </body>
 
